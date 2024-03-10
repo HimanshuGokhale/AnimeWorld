@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    
+     <!-- Provide support for component scanning -->
+    <context:component-scan base-package="AnimeWorld" />
+
+    <!--Provide support for conversion, formatting and validation -->
+    <mvc:annotation-driven/>
+    
+    <bean id="viewResolver"
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+        <property name="prefix">
+            <value>/WEB-INF/View/</value>
+        </property>
+
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
+    
+      <bean id="jdbctemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+     <property name="dataSource" ref="ds"></property>
+  </bean>
+  
+  <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+       <property name="driverClassName" value="com.mysql.jdbc.Driver" ></property>
+       <property name="url" value="jdbc:mysql://localhost:3306/animeworld" ></property>
+       <property name="username" value="root" ></property>
+       <property name="password" value="" ></property>
+  </bean>
+  
+  <bean id="dao" class="AnimeWorld.MainDao">
+     <property name="jdbcTemplate" ref="jdbctemplate"></property>
+     <property name="mailSender" ref="mailSender"></property> 
+  </bean>
+  
+   
+   <mvc:resources mapping = "/image/**" location = "/image/" />
+   <mvc:resources mapping = "/CSS/**" location = "/CSS/" />
+    
+     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/> 
+
+
+     <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">  
+  <property name="host" value="smtp.gmail.com" />  
+    <property name="username" value="himanshurgokhale.it@kdkce.edu.in" />  
+    <property name="password" value="xbmqrftzwhggpsjx" />  
+    <property name="javaMailProperties">  
+       <props>  
+              <prop key="mail.smtp.auth">true</prop>  
+              <prop key="mail.smtp.socketFactory.port">465</prop>  
+              <prop key="mail.smtp.socketFactory.class">javax.net.ssl.SSLSocketFactory</prop>  
+              <prop key="mail.smtp.port">465</prop>  
+        </props>  
+    </property>  
+    
+    
+</bean> 
+
+</beans>
