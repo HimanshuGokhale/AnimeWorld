@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
+    
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,6 +14,9 @@
 
     <title>Registration Form</title>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+     <style type="text/css">
+   
+    </style>
   </head>
   <body style="background-image: url('image/w3.jpg');">
   
@@ -31,7 +36,7 @@
 			<h1 class="display-6">Welcome to AnimeWorld</h1>
 		</header>
 	</div>
-    <div class="row">
+    <div class="row" style=" background-image: url('image/BI.jpg'); background-size: 1400px 700px;">
     <section class="container my-2 bg-dark w-50 text-light p-2">
 		
 		<form class="row g-3 p-3 col col-xs-12" action="save" method="post">

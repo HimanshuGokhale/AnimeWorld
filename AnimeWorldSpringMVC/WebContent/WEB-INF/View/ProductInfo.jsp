@@ -15,7 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>Product Info!!!</title>
-     <style type="text/css">
+   <style type="text/css">
     .sidenav {
   height: 100%;
   width: 0;
@@ -113,6 +113,19 @@
           </c:when>
       </c:choose>
       <c:remove scope="session" var="sesBuy"/>
+      
+      
+       <c:set var="sesCart" value="${sesCart}"/>
+      <c:choose>
+          <c:when test="${sesCart=='success'}">
+             <script type="text/javascript">
+             swal("!!!Product Add Into Cart Successfully!!!","", "success");
+             </script>
+          </c:when>
+      </c:choose>
+      <c:remove scope="session" var="sesCart"/>
+      
+      
   
     <div class="container-fluid" >
 		
@@ -136,7 +149,7 @@
                                          <c:if test="${user eq 'on'}">
                                          	<a href="/AnimeWorldSpringMVC/cart" >Cart</a>
                                        	    <a href="/AnimeWorldSpringMVC/Order/${sesuser}">Order</a>
-                                            <a href="/AnimeWorldSpringMVC/userlogin" >LogOut</a>
+                                            <a href="/AnimeWorldSpringMVC/userlogout" >LogOut</a>
                                          </c:if>
                                          <c:if test="${empty user}">
                                          	<a href="/AnimeWorldSpringMVC/userlogin" >LogIn</a>
@@ -209,7 +222,7 @@
 		
 		<script>
 			function openNav() {
-  				document.getElementById("mySidenav").style.width = "100%";
+  				document.getElementById("mySidenav").style.width = "50%";
 			}
 
 			function closeNav() {

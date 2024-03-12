@@ -14,7 +14,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>Admin Login!!!</title>
-    
+    <style type="text/css">
+    body{
+    background-image: url('image/BI.jpg');
+    background-size: 1500px 700px;
+    }
+    </style>
   </head>
   
   <body >
@@ -30,8 +35,8 @@
     
     <div class="container-fluid" >
 		<!-- Header -->
-		<div class="row" style="margin-top: 100px">
-		   <div class="col-md-12" style="text-align: center;">
+		<div class="row" style="margin-top: 120px">
+		   <div class="col-md-12" style="text-align: center; color: white;">
     		<h1 >Login Form</h1>
   			</div>
 		</div>

@@ -147,7 +147,7 @@
                                          <c:if test="${user eq 'on'}">
                                          	<a href="/AnimeWorldSpringMVC/cart" >Cart</a>
                                        	    <a href="/AnimeWorldSpringMVC/Order/${sesuser}">Order</a>
-                                            <a href="/AnimeWorldSpringMVC/userlogin" >LogOut</a>
+                                            <a href="/AnimeWorldSpringMVC/userlogout" >LogOut</a>
                                          </c:if>
                                          <c:if test="${empty user}">
                                          	<a href="/AnimeWorldSpringMVC/userlogin" >LogIn</a>
@@ -212,7 +212,7 @@
 			}
 		
 			function openNav() {
-  				document.getElementById("mySidenav").style.width = "100%";
+  				document.getElementById("mySidenav").style.width = "50%";
 			}
 
 			function closeNav() {

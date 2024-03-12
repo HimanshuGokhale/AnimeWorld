@@ -1,6 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,7 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>DASHBORD!!!</title>
-     <style type="text/css">
+    <style type="text/css">
     .sidenav {
   height: 100%;
   width: 0;
@@ -126,7 +125,7 @@
                                          <c:if test="${user eq 'on'}">
                                          	<a href="/AnimeWorldSpringMVC/cart" >Cart</a>
                                        	    <a href="/AnimeWorldSpringMVC/Order/${sesuser}">Order</a>
-                                            <a href="/AnimeWorldSpringMVC/userlogin" >LogOut</a>
+                                            <a href="/AnimeWorldSpringMVC/userlogout" >LogOut</a>
                                          </c:if>
                                          <c:if test="${empty user}">
                                          	<a href="/AnimeWorldSpringMVC/userlogin" >LogIn</a>
@@ -144,7 +143,7 @@
 			<div class="col col-lg-3 col-md-3 col-sm-3 col-xs-3">
 					 <form class="form-inline"  style="margin-top: 5px">
       					<div class="md-form my-0">
-       					 <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+       					 <input class="form-control mr-sm-2" id="searchInput" type="text" placeholder="Search" aria-label="Search">
       					</div>
    					 </form> 
 
@@ -162,6 +161,7 @@
                   </div></a>
               <div class="card-body">
                 <h4 class="card-title" style="text-align: center;">${list.name}</h4>
+                <p class="text-muted anime" style="text-align: center;"><b>Anime : </b>${list.anime}</p>
                 <p class="text-muted" style="text-align: center;">Rs.${list.price}</p>
                 <p class="text-muted"  style="text-align: center;">Avaiable stock ${list.stock}</p>
                 <a class="btn btn-outline-primary btn-sm" style="margin-left: 8px" href="ProductInfo/${list.pro_id}/1">View Products</a>
@@ -173,11 +173,37 @@
 		</div>
 		</section>
     </div>
+    
+    <script>
+    // Function to filter products based on search input
+    function filterProducts() {
+        var input, filter, cards, card, title,anime, i, txtValue;
+        input = document.getElementById("searchInput");
+        filter = input.value.toUpperCase();
+        cards = document.getElementsByClassName("card");
+
+        for (i = 0; i < cards.length; i++) {
+            card = cards[i];
+            title = card.querySelector(".card-title");
+            anime = card.querySelector(".anime");
+            txtValue = title.textContent || title.innerText;
+            animeValue = anime.textContent || anime.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1 || animeValue.toUpperCase().indexOf(filter) > -1) {
+                card.style.display = "";
+            } else {
+                card.style.display = "none";
+            }
+        }
+    }
+
+    // Add event listener to trigger filtering on input change
+    document.getElementById("searchInput").addEventListener("input", filterProducts);
+</script>
 		
 		
 		<script>
 			function openNav() {
-  				document.getElementById("mySidenav").style.width = "100%";
+  				document.getElementById("mySidenav").style.width = "50%";
 			}
 
 			function closeNav() {

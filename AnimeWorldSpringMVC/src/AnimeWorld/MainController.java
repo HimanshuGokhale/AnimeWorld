@@ -410,4 +410,16 @@ public class MainController {
 		}
 	}
 	
+	@RequestMapping("/userlogout")
+	public String userlogout(HttpSession session){
+		session.invalidate();
+		return "redirect:/product2";
+	}
+	@RequestMapping("/Adminlogout")
+	public String Adminlogout(HttpSession session){
+		session.invalidate();
+		return "AdminLogin";
+	}
+	
+	
 }

@@ -14,6 +14,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
     <title>Product Details!!!</title>
     
     <style type="text/css">
@@ -126,7 +127,6 @@
 					 
       					<div class="md-form my-0">
       					<input class="form-control" id="myInput" style="background: transparent; type="text" placeholder="Search..">
-       					<!--   <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search"> -->
       					</div>
    					
 			</div>
@@ -139,7 +139,7 @@
 		<div class="row" >
 			<div class="col col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 50px; text-align: center;">
 					<section id="tablesection">
-					     <table class="table"  id="myTable class="table table-striped table-bordered">
+					     <table class="table"  id="myTable" class="table table-striped table-bordered">
  							 <thead>
    								 <tr>
    								 <th>Id</th>
@@ -156,7 +156,7 @@
  							 </thead>
  							 <c:forEach var="list" items="${list}">
  							 <tbody>
-  							 
+  							 <tr>
   							     <td>${list.pro_id}</td>
   							 <td>${list.name}</td>
   							 <td>${list.decription}</td>
@@ -167,7 +167,7 @@
   							 <td>${list.image}</td>
   							 <td><a href="edit/${list.pro_id}">Edit</a></td>
   							 <td><a href="delete/${list.pro_id}">Delete</a></td>
-  							 
+  							 </tr>
   							  
  						     </tbody>
  						     </c:forEach>
@@ -177,29 +177,33 @@
 			
 		</div>
 		</div>
-    </div>
-        <script type="text/javascript">
-             function anime() {
-				
-			}
-        </script>
-        
-		<script type="text/javascript">
-		new DataTable('#example');
-		</script>
-		<script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
 $(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#myTable tr").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tbody tr").each(function() {
+            var found = false;
+            $(this).find("td").each(function() {
+                if ($(this).text().toLowerCase().indexOf(value) > -1) {
+                    found = true;
+                    return false; // Exit the inner loop
+                }
+            });
+            if (found) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
     });
-  });
 });
 </script>
+
 		<script>
 			function openNav() {
-  				document.getElementById("mySidenav").style.width = "100%";
+  				document.getElementById("mySidenav").style.width = "50%";
 			}
 
 			function closeNav() {
@@ -217,5 +221,6 @@ $(document).ready(function(){
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
+    
   </body>
 </html>
